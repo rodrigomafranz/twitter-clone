@@ -1,0 +1,29 @@
+<h1>Create your account</h1>
+
+<%form_for :user do |form| %>
+ <div>
+	<%= form.label :name %>
+	<div> 
+		<%= form.text_field :name %>
+	</div>
+ </div>
+
+  <div>
+	<%= form.label :email %>
+	<div> 
+		<%= form.text_field :email %>
+	</div>
+ </div>
+
+  <div>
+	<%= form.label :password_digest %>
+	<div> 
+		<%= form.text_field :password_digest %>
+	</div>
+ </div>
+
+ <div>
+ 	<%= form.submit %>
+ </div>
+<% end %>
+
