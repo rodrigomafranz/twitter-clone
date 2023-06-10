@@ -1,0 +1,26 @@
+<div style="border: 1px solid black" id="<%= dom_id message %>">
+  <p>
+    <strong>User:</strong>
+    <%= message.user_name %>
+  </p>
+
+  <% if message.text.present? %>
+    <p>
+      <strong>Text:</strong>
+      <%= message.text %>
+    </p>
+  <% end %>
+
+  <% if message.image_url.present? %>
+    <p>
+      <strong>Image url:</strong>
+      <%= image_tag message.image_url, width: 100 %>
+    </p>
+  <% end %>
+
+  <p>
+  <%= link_to "Edit this message", edit_message_path(message) %> |
+  <%= link_to "Destroy this message", message, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>    
+  <p>
+
+</div>

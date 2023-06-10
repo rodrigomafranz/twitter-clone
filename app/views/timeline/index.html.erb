@@ -1,1 +1,7 @@
-<h1>Home</h1>
+<% if current_user.present? %>
+	<%= render 'messages/form', message: @message %
+<% else %>
+	<%= link_to "New message", new_message_path %>
+<% end %>
+
+<%= render 'messages/list' %>

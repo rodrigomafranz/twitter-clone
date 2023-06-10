@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(email: session_params[:email]) || User.new
     if @user.present? && @user.authenticate(session_params[:password])
       session[:user_id] = @user.id
-      redirect_to root_path
+      redirect_to (session.delete(:redirect_to) || root_path)
     else
       #redirect_to login_path, alert: 'Email or password is invalid!'
       render :new, status: :unauthorized
