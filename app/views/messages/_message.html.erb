@@ -19,8 +19,10 @@
   <% end %>
 
   <p>
-  <%= link_to "Edit this message", edit_message_path(message) %> |
-  <%= link_to "Destroy this message", message, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>    
+    <% if current_user.present? && current_user.id == message.user_id %>
+      <%= link_to "Edit this message", edit_message_path(message) %> |
+      <%= link_to "Destroy this message", message, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+    <% end %>    
   <p>
 
 </div>
