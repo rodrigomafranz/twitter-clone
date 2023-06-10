@@ -11,19 +11,21 @@
   </head>
 
   <body>
-    <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-    <% end %>  
-
+  
     <nav>
       <%=link_to 'Home' , root_path %>
       <% if current_user.present? %>
+        <%= link_to 'Logout', logout_path %>
         <p>You´re logged as <%= current_user.name %><p>
-        <%= link_to 'Logout' %>
       <% else %>
-        <%= link_to 'Login' %>
-        <%=link_to 'Sing up' , singup_path %>
+        <%= link_to 'Login', login_path %>
+        <%= link_to 'Sign up', signup_path %>
+      <% end %> 
     </nav>
+
+    <% flash.each do |type, msg| %>
+       <div class="type"><%= msg %></div>
+    <% end %>
 
     <div class= "container">
     <%= yield %>

@@ -9,12 +9,12 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_path, notice: "Welcome #{@user.name}!"
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :password_digest)
+    params.require(:user).permit(:name, :email, :password)
   end
   
 end
