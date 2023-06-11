@@ -3,12 +3,12 @@ class User < ApplicationRecord
 	has_secure_password
 
 	validates :name, :email, presence: true
-	validates :email,      uniqueness: {case sensitive: false}
+	validates :email,      uniqueness: {case_sensitive: false}
 
 	def authenticate(password)
 		user = super(password)
 
-		return user unless user.is_a?(User)
+		return user if user.is_a?(User)
 
 		errors.add(:password, 'is invalid!')
 

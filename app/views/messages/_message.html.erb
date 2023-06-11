@@ -1,7 +1,7 @@
 <div style="border: 1px solid black" id="<%= dom_id message %>">
   <p>
     <strong>User:</strong>
-    <%= message.user_name %>
+    <%= message.user.name %>
   </p>
 
   <% if message.text.present? %>

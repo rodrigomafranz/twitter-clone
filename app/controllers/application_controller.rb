@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def authorize
-		session[:redirect_to] = request.url
 		redirect_to login_path, alert: 'You must login for creating new messages!' if current_user.nil?
 	end
 end
