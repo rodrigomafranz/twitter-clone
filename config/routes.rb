@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :messages, except: %i[index show]
+  resources :messages, except: %i[index show] do 
+    post 'retweet', to: 'messages#retweet'
+  end
+
   get  'login',  to: 'sessions#new'
   post 'login',  to: 'sessions#create'
   get  'logout', to: 'sessions#destroy'

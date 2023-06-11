@@ -22,7 +22,9 @@
     <% if current_user.present? && current_user.id == message.user_id %>
       <%= link_to "Edit this message", edit_message_path(message) %> |
       <%= link_to "Destroy this message", message, data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
-    <% end %>    
+    <% else %>
+      <%= link_to "Retweet this message", message_retweet_path(message), data: {turbo_method: :post} %>  
+    <% end %>
   <p>
 
 </div>

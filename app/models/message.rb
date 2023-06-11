@@ -31,4 +31,10 @@ class Message < ApplicationRecord
     File.delete(file_path) if File.exist?(file_path)
   end
 
+  def retweet(user)
+    text = "RT from @#{self.user.name}: #{self.text}"
+
+    Message.create(user: user, text: text, image_url: self.image_url)
+  end  
+
 end
