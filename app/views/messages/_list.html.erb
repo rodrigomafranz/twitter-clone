@@ -1,5 +1,11 @@
 <div id="messages">
+  <br>
+  <%== pagy_nav(@pagy) %>
+
   <% @messages.each do |message| %>
     <%= render message %>
   <% end %>
+
+  <%== pagy_nav(@pagy) %>
+
 </div>
