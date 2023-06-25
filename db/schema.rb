@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_10_172926) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_21_194453) do
+  create_table "fellowships", force: :cascade do |t|
+    t.integer "follower_user_id", null: false
+    t.integer "followed_user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["followed_user_id"], name: "index_fellowships_on_followed_user_id"
+    t.index ["follower_user_id"], name: "index_fellowships_on_follower_user_id"
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "text"
@@ -29,5 +39,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_10_172926) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "fellowships", "users", column: "followed_user_id"
+  add_foreign_key "fellowships", "users", column: "follower_user_id"
   add_foreign_key "messages", "users"
 end

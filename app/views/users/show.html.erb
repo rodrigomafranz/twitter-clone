@@ -1,0 +1,19 @@
+<% if @fellowship.present? && @fellowship.errors.any? %>
+	<div style="color: red">
+		<ul>
+			<% @fellowship.errors.each do |error| %>
+				<li><%= error.full_message %></li>
+			<% end %>
+		</ul>
+	</div>
+<% end %>	
+
+<h1><%= @user.name %></h1>
+
+<% if current_user.id != @user.id %>
+	<% if current_user.following?(@user.id) %>
+		<%= link_to 'Unfollow this user', unfollow_user_path(@user.name), data: {turbo_method: :delete} %>
+	<% else %>
+		<%= link_to 'Follow this user',   follow_user_path(@user.name), data: {turbo_method: :post} %>
+	<% end %>
+<% end %>

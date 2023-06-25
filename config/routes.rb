@@ -10,5 +10,9 @@ Rails.application.routes.draw do
   get  'signup', to: 'users#new'
   post 'signup', to: 'users#create'
 
+  get    '@:name',          to: 'users#show',    as: :user
+  post   '@:name/follow',   to: 'users#follow',   as: :follow_user
+  delete '@:name/unfollow', to: 'users#unfollow', as: :unfollow_user
+
   root 'timeline#index'
 end
